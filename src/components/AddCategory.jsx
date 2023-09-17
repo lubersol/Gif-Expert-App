@@ -1,24 +1,31 @@
 import { useState } from 'react';
 
 
-export const AddCategory = () => {
+// eslint-disable-next-line react/prop-types
+export const AddCategory = ({ setCategories }) => {
     
-    const [ inputValue, setInputValue ] =  useState('One Punch');
+    const [ inputValue, setInputValue ] =  useState('');
 
-    const onInputChange = (event) => {
-        setInputValue(event.target.value)
-    }
-
-    const onSubmit = ( event ) => {
-        event.preventDefault()
+    const onInputChange = ({ target }) => {
+        setInputValue( target.value )
     }
     // OTRA FORMA
-    // const onInputChange = ({ target }) => {
-    //     setInputValue( target.value )
+    // const onInputChange = (event) => {
+    //     setInputValue(event.target.value)
     // }
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        if( inputValue.trim().length <= 1 ) return;
+
+        setCategories( categories => [ inputValue, ...categories ]);
+        setInputValue('');
+    }
+    
+    
     
     return(
-        <form onSubmit={ (event) => onSubmit(event) }>
+        <form onSubmit={ onSubmit }>
             <input 
                 type="text" 
                 placeholder="Buscar gifs"
