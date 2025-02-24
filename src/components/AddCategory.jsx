@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import PropTypes from 'prop-types';
 
 // eslint-disable-next-line react/prop-types
 export const AddCategory = ({ setCategories }) => {
@@ -25,7 +25,7 @@ export const AddCategory = ({ setCategories }) => {
     
     
     return(
-        <form onSubmit={ onSubmit }>
+        <form onSubmit={ onSubmit } aria-label="form">
             <input 
                 type="text" 
                 placeholder="Buscar gifs"
@@ -34,4 +34,10 @@ export const AddCategory = ({ setCategories }) => {
             />
         </form>
     )
+}
+
+
+//Para testing
+AddCategory.propTypes = {
+    onNewCategory: PropTypes.func.isRequired,
 }

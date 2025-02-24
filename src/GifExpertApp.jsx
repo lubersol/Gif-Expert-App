@@ -12,7 +12,6 @@ export const GifExpertApp = () => {
         setCategories([ newCategory, ...categories ]);
     }
 
-
     return (
         <>
             <h1>GifExpertApp</h1>
@@ -24,7 +23,8 @@ export const GifExpertApp = () => {
                 categories.map( ( category ) => (
                     <GifGrid 
                         key={ category } 
-                        category={ category } />
+                        category={ category } 
+                    />
                 ))
             }
         </>
